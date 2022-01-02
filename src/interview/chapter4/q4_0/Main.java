@@ -1,4 +1,4 @@
-package interview.chapter4.q4_1;
+package interview.chapter4.q4_0;
 
 import java.util.Scanner;
 
