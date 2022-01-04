@@ -1,3 +1,5 @@
+package programmers.study.q1_6.q1_6_a;
+
 public class Solution {
     public int solution(int n) {
         int answer = getBiggerNumber(n);
