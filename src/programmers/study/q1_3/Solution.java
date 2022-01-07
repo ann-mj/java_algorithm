@@ -1,66 +1,69 @@
 package programmers.study.q1_3;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Map;
 
 class Solution {
-    public static void main(String[] args) {
-        String input = "ULURRDLLU";
-        Solution s = new Solution();
-        System.out.println(s.solution(input));
-    }
     public int solution(String dirs) {
         int answer = 0;
-        int[][] arr = new int[11][11]; // -5 부터 5까지 라 11칸이 존재
+        Map<Character, Integer> D = new HashMap<>();
+        D.put('L', 0);
+        D.put('R', 1);
+        D.put('U', 2);
+        D.put('D', 3);
+        boolean[][][] visit = new boolean[11][11][4]; // 방향까지 고려
 
-        ArrayList<Node>[][] adj = new ArrayList[11][11];
-
-        // 좌상단을 0,0 으로 생각하면, 우리가 출발해야할 실제 좌표는 5, 5 이다
-        int x = 5; // 초기 좌표
-        int y = 5; // 초기 좌표
-        int nx = 0; // 다음 x 좌표
-        int ny = 0; // 다음 x 좌표
-
-        for (int i = 0; i < 11; i++) {
-            for (int j = 0; j < 11; j++) {
-                adj[i][j] = new ArrayList<>();
-            }
-        }
-
+        int curX = 0, curY = 0, nx, ny;
         for (int i = 0; i < dirs.length(); i++) {
-            Node nextDirection = getDirection(dirs.charAt(i));
-            nx = x + nextDirection.x;
-            ny = y + nextDirection.y;
+            boolean isVisit;
+            Node dir = getDirection(dirs.charAt(i));
+            nx = curX + dir.x;
+            ny = curY + dir.y;
             // 0 : -5 , 10 : 5
-            if (nx < 0 || ny < 0 || nx > 10 || ny > 10) {
+            if (nx < -5 || ny < -5 || nx > 5 || ny > 5) {
                 continue;
             }
 
-            boolean visited = false;
-            for (int j = 0; j < adj[x][y].size(); j++) {
-                if(nx == adj[x][y].get(j).x && ny == adj[x][y].get(j).y) {
-                    visited = true;
-                    break;
-                }
-            }
+            // 인접한 노드인지를 체크
+            isVisit = checkVisit(visit, curX, curY, nx, ny, D.get(dirs.charAt(i)), D.get(getReverseDirection(dirs.charAt(i))));
 
-            if(!visited) {
-                adj[x][y].add(new Node(nx, ny));
+            // 현재 노드 방문처리
+            if(!isVisit) {
+                visit[curX + 5][curY + 5][D.get(dirs.charAt(i))] = true;
+                // 반대 방향 구하기
+                char reverseDirection = getReverseDirection(dirs.charAt(i));
+                visit[nx + 5][ny + 5][D.get(reverseDirection)] = true;
+                answer++;
             }
-            x = nx;
-            y = ny;
-            if(visited) continue;
-            answer++;
+            curX = nx;
+            curY = ny;
         }
         return answer;
+    }
+
+    private char getReverseDirection(char charAt) {
+        if (Character.compare('U', charAt) == 0) {
+            return 'D';
+        } else if (Character.compare('D', charAt) == 0) {
+            return 'U';
+        } else if (Character.compare('R', charAt) == 0) {
+            return 'L';
+        } else {
+            return 'R';
+        }
+    }
+
+    private boolean checkVisit(boolean[][][] visit, int curX, int curY, int nx, int ny, int dir, int reverseDir) {
+        // 5를 더한 이유 : -5 는 배열 인덱스로 접근안됨.
+        return visit[curX + 5][curY + 5][dir] && visit[nx + 5][ny + 5][reverseDir];
     }
 
     private Node getDirection(char dir) {
         Node u = new Node(0, -1);
         Node d = new Node(0, 1);
-        Node r = new Node(1, 0);
-        Node l = new Node(-1, 0);
+        Node r = new Node(-1, 0);
+        Node l = new Node(1, 0);
         Map<Character, Node> map = new HashMap<>();
         map.put('U', u);
         map.put('D', d);
