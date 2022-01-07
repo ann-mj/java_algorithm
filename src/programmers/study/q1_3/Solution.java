@@ -1,6 +1,6 @@
 package programmers.study.q1_3;
 
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,8 +12,7 @@ class Solution {
         D.put('R', 1);
         D.put('U', 2);
         D.put('D', 3);
-        boolean[][][] visit = new boolean[11][11][4]; // 방향까지 고려
-
+        boolean[][][] visit = new boolean[11][11][4];
         int curX = 0, curY = 0, nx, ny;
         for (int i = 0; i < dirs.length(); i++) {
             boolean isVisit;
