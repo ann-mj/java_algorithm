@@ -33,7 +33,8 @@ public class Solution {
             }
         }
 
-        int[] result = answer.stream().mapToInt(a -> a).toArray();
+        int[] result = answer.stream()
+                .mapToInt(a -> a).toArray();
         return result;
     }
 
