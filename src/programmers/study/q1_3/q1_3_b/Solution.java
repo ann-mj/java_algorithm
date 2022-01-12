@@ -1,10 +1,5 @@
 package programmers.study.q1_3.q1_3_b;
 
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 class Solution {
     static final int[] dirX = {0, 0, -1, 1}; // 순서대로 LRUD
     static final int[] dirY = {-1, 1, 0, 0};
