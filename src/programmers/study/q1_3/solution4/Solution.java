@@ -81,7 +81,6 @@ class Solution {
         @Override
         public int hashCode() {
             return start.hashCode() + end.hashCode();
-
         }
 
         @Override
