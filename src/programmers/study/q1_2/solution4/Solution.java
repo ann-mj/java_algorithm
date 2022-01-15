@@ -54,7 +54,7 @@ public class Solution {
             }
         }
 
-        int max = persons.stream().max(Student::compareTo).get().answerCount; /* 최댓값 찾기 */
+        int max = persons.stream().max(Student::compareTo).get().getAnswerCount(); /* 최댓값 찾기 */
 
         return persons.stream().filter(a -> (a.getAnswerCount() == max)).mapToInt(Student::getStudentNumber).toArray();
     }
