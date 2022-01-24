@@ -1,22 +1,19 @@
 package programmers.study.q3_3.solution2;
 
 class Solution {
-    static int answer = 0;
-
     public int solution(int[] numbers, int target) {
-        dfs(numbers, 0, 0, target);
-        return answer;
+        return dfs(numbers, 0, 0, target);
     }
 
-    private void dfs(int[] numbers, int count, int sum, int target) {
+    private int dfs(int[] numbers, int count, int sum, int target) {
         if (count == numbers.length) {
             if (sum == target) {
-                answer++;
+                return 1;
             }
-            return;
+            return 0;
         }
 
-        dfs(numbers, count + 1, sum + numbers[count], target);
-        dfs(numbers, count + 1, sum - numbers[count], target);
+        return dfs(numbers, count + 1, sum + numbers[count], target)
+                + dfs(numbers, count + 1, sum - numbers[count], target);
     }
 }
