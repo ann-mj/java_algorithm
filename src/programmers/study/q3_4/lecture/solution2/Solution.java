@@ -1,7 +1,8 @@
-package programmers.study.q3_4.lecture.solution1;
+package programmers.study.q3_4.lecture.solution2;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 class Solution {
     public int solution(int n, int[][] computers) {
@@ -18,16 +19,16 @@ class Solution {
 
     private void visitAllConnectedComputers(int i, int[][] computers, boolean[] visit) {
         // BFS
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(i);
-        while (!queue.isEmpty()) {
-            int c = queue.poll();
+        Stack<Integer> stack = new Stack<>();
+        stack.push(i);
+        while (!stack.isEmpty()) {
+            int c = stack.pop();
 
             for (int j = 0; j < computers[c].length; j++) {
                 if (visit[j]) continue;
                 if (computers[c][j] == 1) {
                     visit[j] = true;
-                    queue.offer(j);
+                    stack.push(j);
                 }
             }
         }
