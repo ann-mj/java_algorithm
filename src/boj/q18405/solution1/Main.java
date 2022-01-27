@@ -58,7 +58,6 @@ public class Main {
     }
 
     private static void process() {
-        int answer = 0;
         PriorityQueue<Node> q = new PriorityQueue<>();
         initVirus(q);
 
