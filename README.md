@@ -8,3 +8,4 @@
 |3| 백준     | 2178     |GRAPH|2022-03-10|[미로 탐색](https://www.acmicpc.net/problem/2178) |🟩|
 |4| 백준     | 2447     |DivideAndConquer|2022-03-11|[별 찍기 - 10](https://www.acmicpc.net/problem/2447) |🟩|
 |5| 백준     | 1967     |GRAPH|2022-03-11|[트리의 지름](https://www.acmicpc.net/problem/1967) |🟩|
+|6| 백준     | 2805     |BinarySearch|2022-03-11|[나무 자르기](https://www.acmicpc.net/problem/2805) |🟩|
