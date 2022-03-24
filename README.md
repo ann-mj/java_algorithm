@@ -21,3 +21,4 @@
 |1| BOJ     | 14500     |2022-03-21|[테트로미노](https://www.acmicpc.net/problem/14500) |🟩| |🟩|
 |2| BOJ     | 14501     |2022-03-22|[퇴사](https://www.acmicpc.net/problem/14501) |🟩| |🟩|
 |3| BOJ     | 21608     |2022-03-22|[상어 초등학교](https://www.acmicpc.net/problem/21608) |🟩| ||
+|4| BOJ     | 23290     |2022-03-24|[마법사 상어와 복제](https://www.acmicpc.net/problem/23290) |🟩| ||
